@@ -1,0 +1,1 @@
+("8.2" ta6osx ("87d427f11b6f0307a9be7d1f38d3e956a25237e9" . "556c579eeb8215287510146a45c4838ccc6520e9") (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"runtime-config.rkt") (collects #"rosette" #"lang" #"reader.rkt") (collects #"rosette" #"main.rkt") (indirect collects #"racket" #"match" #"gen-match.rkt") (indirect collects #"racket" #"match" #"parse.rkt"))
