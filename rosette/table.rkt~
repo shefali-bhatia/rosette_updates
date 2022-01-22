@@ -83,23 +83,6 @@
                         s2)])
     (append renamed1 renamed2)))
 
-(define (qualified-schema-join t1 t2)
-  (let* ([s1 (get-qualified-schema t1)]
-         [s2 (get-qualified-schema t2)]
-         [n1 (Table-name t1)]
-         [n2 (Table-name t2)]
-         [renamed1 (map (lambda (x)
-                          (if (list? x)
-                              (cons n1 x)
-                              (list n1 x)))
-                        s1)]
-         [renamed2 (map (lambda (x)
-                          (if (list? x)
-                              (cons n2 x)
-                              (list n2 x)))
-                        s2)])
-    (append renamed1 renamed2)))
-
 (define (string->colname str)
   (map identity (string-split str ".")))
 

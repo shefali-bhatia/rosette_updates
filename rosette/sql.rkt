@@ -24,7 +24,15 @@
 (define-syntax-rule (NAMED t) (query-named t))
 (define-syntax-rule (RENAME t name) (rename-table t name))
 (define-syntax-rule (LEFT-OUTER-JOIN q1 q2 p) (query-left-outer-join q1 q2 p))
-(define-syntax-rule (FULL-OUTER-JOIN q1 q2 p) (query-union-all (query-left-outer-join q1 q2 p) (query-left-outer-join q2 q1 p)))
+(define-syntax-rule (FULL-OUTER-JOIN q1 q2 p)
+(query-union-all
+(query-left-outer-join q1 q2 p)
+  (query-select
+   (map (lambda (i) (val-column-ref (second i))) (qualified-schema-join (query-named-table-ref q1) (query-named-table-ref q2)))
+   (query-left-outer-join q2 q1 p)
+   (filter-binop equal? (filter-binop-val1 p) (val-const sqlnull))
+   )
+  ))
 
 (define-syntax AS
   (syntax-rules () [(AS q [t l]) (query-rename-full q t l)]
