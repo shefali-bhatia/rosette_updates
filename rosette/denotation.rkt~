@@ -183,6 +183,9 @@
 (define (denote-value value nmap)
   (cond
     [(val-const? value) `(lambda (e) ,(val-const-val value))]
+;    [(val-like? value)
+;     `(lambda (e)  (,(denote-value (val-like-val1 value) nmap) e)
+;                   (,(denote-value (val-like-val2 value) nmap) e))]
     [(val-column-ref? value)
      `(lambda (e) (list-ref e ,(hash-ref nmap (val-column-ref-column-name value))))]
     [(val-bexpr? value)

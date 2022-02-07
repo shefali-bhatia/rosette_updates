@@ -92,6 +92,7 @@
 (define-syntax-rule (VAL-UNOP op val) (val-uexpr op (VAL val)))
 (define-syntax-rule (AGGR-SUBQ aggr-fun q) (val-aggr-subq aggr-fun q))
 (define (VALS . v) (map (lambda (x) (VAL x)) v))
+;(define-syntax-rule (LIKE v1 v2) (val-like (VAL v1) (VAL v2)))
 
 ;;;;;;;;;;;;;;;;;; filter-level syntax macros ;;;;;;;;;;;;;;;;;;;
 

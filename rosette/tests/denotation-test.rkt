@@ -132,29 +132,41 @@
 
 (define b_plus (broad-casting-bexpr-wrapper +))
 
+(define (gen-a)
+  (define-symbolic* a boolean?)
+  a)
+
+(define (gen-b)
+  (define-symbolic* b boolean?)
+  b)
+
 (b_plus 1 2)
 (b_plus '((1 . 2) (3 . 5)) 2)
 (b_plus '((1 . 2) (3 . 5)) '((9 . 2) (11 . 5)))
 
 table1
-(println "q1")
-(denote-and-run q)
-(denote-and-run q-macro)
+;(println "q1")
+;(denote-and-run q)
+;(denote-and-run q-macro)
+;
+;(println "q2")
+;(denote-and-run q2)
+;(denote-and-run q2-macro)
+;
+;(println "q3")
+;(denote-and-run q3)
+;(denote-and-run q3-macro)
+;
+;(println "q4 q6")
+;(denote-and-run q4)
+;(denote-and-run q6)
+;
+;(println "q5")
+;(denote-and-run q5)
+;
+;(println "q7")
+;(denote-and-run q7)
 
-(println "q2")
-(denote-and-run q2)
-(denote-and-run q2-macro)
+; (denote-and-run (SELECT (VALS "t2.a" "t2.b" "t2.c") FROM (NAMED table2) WHERE (LIKE "t2.a" "DONALD")))
 
-(println "q3")
-(denote-and-run q3)
-(denote-and-run q3-macro)
-
-(println "q4 q6")
-(denote-and-run q4)
-(denote-and-run q6)
-
-(println "q5")
-(denote-and-run q5)
-
-(println "q7")
-(denote-and-run q7)
+(denote-and-run (SELECT (VALS "t2.a" "t2.b" "t2.c") FROM (NAMED table2) WHERE (AND(filter-sym (gen-a))(filter-sym (gen-b)) )))
