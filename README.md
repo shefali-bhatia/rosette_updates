@@ -20,3 +20,10 @@ This project is in active development. Shoot us a message (cosette@cs.washington
 
 [web]: http://cosette.cs.washington.edu/.
 [demo]: http://demo.cosette.cs.washington.edu/.
+
+
+Installation Guide
+=======
+1. Copy the `cosette-rs` folder to main directory
+2. `cd cosette-py`
+3. `python parallel_script.py`
